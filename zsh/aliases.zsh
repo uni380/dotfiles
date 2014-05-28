@@ -116,7 +116,7 @@ alias gz='tar -zcvf'
 # Ruby
 alias c='rails c' # Rails 3
 alias co='script/console --irb=pry' # Rails 2
-alias ts='thin start'
+# alias ts='thin start'
 alias ms='mongrel_rails start'
 alias tfdl='tail -f log/development.log'
 alias tftl='tail -f log/test.log'
