@@ -2,6 +2,7 @@ if !has("gui_macvim")
   set t_Co=256
 endif
 
+if !exists("g:yadr_disable_solarized_enhancements")
 hi! link txtBold Identifier
 hi! link zshVariableDef Identifier
 hi! link zshFunction Function
@@ -66,3 +67,4 @@ hi! EasyMotionTarget guifg=#4CE660 gui=bold
 
 " Make sure this file loads itself on top of any other color settings
 au VimEnter * so ~/.vim/settings/solarized.vim
+endif
