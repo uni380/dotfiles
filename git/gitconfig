@@ -111,7 +111,7 @@
 [core]
   autocrlf = false
   editor = vim
-  excludesfile = ~/.yadr/git/gitignore
+	excludesfile = ~/.yadr/git/gitignore
 [advice]
   statusHints = false
 [diff]
@@ -127,13 +127,14 @@
 [include]
   path = .gitconfig.user
 [user]
-  name = Jan Šibil
-  email = 21-1@unicornuniverse.eu
+	name = Jan Šibil
+	email = 21-1@unicornuniverse.eu
 [github]
   user = uni380
 [difftool "sourcetree"]
-	cmd = /Applications/Kaleidoscope.app/Contents/MacOS/ksdiff -w \"$LOCAL\" \"$REMOTE\"
+	cmd = /usr/local/bin/ksdiff -w \\\"$LOCAL\\\" \\\"$REMOTE\\\"
 	path = 
+	trustExitCode = true
 [mergetool "sourcetree"]
-	cmd = ksdiff --merge --output \\\"$MERGED\\\" --base \\\"$BASE\\\" -- \\\"$LOCAL\\\" \\\"$REMOTE\\\"
+	cmd = /usr/local/bin/ksdiff --merge --output \\\"$MERGED\\\" --base \\\"$BASE\\\" -- \\\"$LOCAL\\\" \\\"$REMOTE\\\"
 	trustExitCode = true
