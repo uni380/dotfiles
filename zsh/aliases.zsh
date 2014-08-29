@@ -159,3 +159,9 @@ alias spb="git checkout -b \`sp | tail -2 | grep '#' | sed 's/^ //' | sed 's/[^A
 
 # MTR
 alias smtr='sudo mtr'
+
+# Homebrew
+alias bu='brew update'
+alias bo='brew outdated'
+alias bug='brew upgrade'
+alias bcl='brew cleanup'
