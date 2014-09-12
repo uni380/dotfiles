@@ -165,3 +165,7 @@ alias bu='brew update'
 alias bo='brew outdated'
 alias bug='brew upgrade'
 alias bcl='brew cleanup'
+
+# issuues
+alias visa='vim ~/.issuues/accept.json'
+alias ia='issuues accept'
