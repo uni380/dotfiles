@@ -17,6 +17,7 @@ alias psr='ps aux | grep ruby'
 
 # Moving around
 alias cdb='cd -'
+alias cls='clear;ls'
 
 # Show human friendly numbers and colors
 alias df='df -h'
