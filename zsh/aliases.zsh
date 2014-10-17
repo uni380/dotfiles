@@ -184,3 +184,7 @@ alias brewu='brew update && brew upgrade && brew cleanup && brew prune && brew d
 # issuues
 alias visa='vim ~/.issuues/accept.json'
 alias ia='issuues accept'
+
+# UU
+alias vuuconf='vim ~/.uu/config/uu-client.properties'
+alias vuesconf='vim ~/.ues/config/ues-client.properties'
