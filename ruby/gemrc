@@ -1,11 +1,10 @@
 ---
-:backtrace: false
-:bulk_threshold: 1000
+:update_sources: true
 :sources:
 - http://rubygems.org
 - http://gems.plus4u.net
-:update_sources: true
+:benchmark: false
+:backtrace: false
 :verbose: true
 :ssl_verify_mode: 0
-benchmark: false
-gem: "--no-ri --no-rdoc"
+gem: --no-document
