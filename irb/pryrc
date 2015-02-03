@@ -125,3 +125,8 @@ def uu_login
   UU::OS::Security::Session.login(File.expand_path('~/.uuacc'))
 end
 
+def ues_login
+  require 'ues.core'
+  UESLogin.login(File.expand_path('~/.uuacc'))
+end
+
