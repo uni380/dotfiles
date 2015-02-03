@@ -177,6 +177,7 @@ alias smtr='sudo mtr'
 # Homebrew
 alias bu='brew update'
 alias bo='brew outdated'
+alias buo='brew update && echo "**********\nOutdated:\n" && brew outdated'
 alias bug='brew upgrade'
 alias bcl='brew cleanup'
 alias brewu='brew update && brew upgrade && brew cleanup && brew prune && brew doctor'
