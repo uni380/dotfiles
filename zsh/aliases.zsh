@@ -207,7 +207,7 @@ alias buo='brew update && echo "**********\nOutdated:\n" && brew outdated'
 alias bug='brew upgrade --all'
 alias bcl='brew cleanup'
 alias bci='brew cask install'
-alias brewu='brew update && brew upgrade && brew cleanup && brew prune && brew doctor'
+alias brewu='brew update --all && brew upgrade && brew cleanup && brew prune && brew doctor'
 
 # issuues
 alias visa='vim ~/.issuues/accept.json'
