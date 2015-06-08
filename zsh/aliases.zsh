@@ -178,8 +178,9 @@ alias smtr='sudo mtr'
 alias bu='brew update'
 alias bo='brew outdated'
 alias buo='brew update && echo "**********\nOutdated:\n" && brew outdated'
-alias bug='brew upgrade'
+alias bug='brew upgrade --all'
 alias bcl='brew cleanup'
+alias bci='brew cask install'
 alias brewu='brew update && brew upgrade && brew cleanup && brew prune && brew doctor'
 
 # issuues
@@ -189,3 +190,8 @@ alias ia='issuues accept'
 # UU
 alias vuuconf='vim ~/.uu/config/uu-client.properties'
 alias vuesconf='vim ~/.ues/config/ues-client.properties'
+
+alias b2d='boot2docker'
+
+alias ysg='yard server --gems'
+alias jc='jconsole &'
