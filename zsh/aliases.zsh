@@ -85,6 +85,7 @@ alias gci='git ci'
 alias gco='git co'
 alias gcp='git cp'
 alias ga='git add -A'
+alias gap='git add -p'
 alias guns='git unstage'
 alias gunc='git uncommit'
 alias gm='git merge'
@@ -143,7 +144,8 @@ alias gz='tar -zcvf'
 
 # Ruby
 alias c='rails c' # Rails 3
-alias co='script/console --irb=pry' # Rails 2
+alias co='script/console' # Rails 2
+alias cod='script/console --debugger'
 # alias ts='thin start'
 alias ms='mongrel_rails start'
 alias tfdl='tail -f log/development.log'
@@ -207,7 +209,7 @@ alias buo='brew update && echo "**********\nOutdated:\n" && brew outdated'
 alias bug='brew upgrade --all'
 alias bcl='brew cleanup'
 alias bci='brew cask install'
-alias brewu='brew update  && brew upgrade --all && brew cleanup && brew prune && brew doctor'
+alias brewu='brew update && brew upgrade && brew cleanup && brew prune && brew doctor'
 
 # issuues
 alias visa='vim ~/.issuues/accept.json'
