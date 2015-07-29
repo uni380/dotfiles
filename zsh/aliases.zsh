@@ -195,3 +195,6 @@ alias b2d='boot2docker'
 
 alias ysg='yard server --gems'
 alias jc='jconsole &'
+
+alias rbs='rbenv shell'
+alias rbsu='rbenv shell --unset'
