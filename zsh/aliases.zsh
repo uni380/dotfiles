@@ -146,7 +146,7 @@ alias gz='tar -zcvf'
 alias c='rails c' # Rails 3
 alias co='script/console' # Rails 2
 alias cod='script/console --debugger'
-# alias ts='thin start'
+# alias ts='thin start -a 127.0.0.1'
 alias ms='mongrel_rails start'
 alias tfdl='tail -f log/development.log'
 alias tftl='tail -f log/test.log'
@@ -209,7 +209,7 @@ alias buo='brew update && echo "**********\nOutdated:\n" && brew outdated'
 alias bug='brew upgrade --all'
 alias bcl='brew cleanup'
 alias bci='brew cask install'
-alias brewu='brew update && brew upgrade && brew cleanup && brew prune && brew doctor'
+alias brewu='brew update  && brew upgrade --all && brew cleanup && brew prune && brew doctor'
 
 # issuues
 alias visa='vim ~/.issuues/accept.json'
