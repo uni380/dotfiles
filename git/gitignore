@@ -40,9 +40,15 @@ Session.vim
 .netrwhist
 *~
 
+.ctrlp
+
 # SASS
 # ----------------------------------------------------------------------------------------------
 .sass-cache
 
 # JetBrains IDE
 .idea/
+
+# RBenv
+.rbenv-gemsets
+
