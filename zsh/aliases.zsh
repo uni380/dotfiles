@@ -235,3 +235,16 @@ alias jc='jconsole &'
 
 alias rbs='rbenv shell'
 alias rbsu='rbenv shell --unset'
+
+alias ge='gem edit'
+alias gb='gem browse'
+
+alias sud='softwareupdate'
+alias sudl='softwareupdate --list'
+
+alias fn='find . -name'
+
+# Docker
+alias dk='docker'
+alias dc='docker-compose'
+alias dm='docker-machine'
