@@ -120,9 +120,10 @@ class Object
   end
 end
 
-def uu_login
+def uu_login(credentials = nil)
   require 'uu/os/security/session'
-  UU::OS::Security::Session.login(File.expand_path('~/.uuacc'))
+  credentials ||= '21-1'
+  UU::OS::Security::Session.login(credentials)
 end
 
 def ues_login
