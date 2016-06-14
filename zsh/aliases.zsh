@@ -48,7 +48,7 @@ TRAPHUP() {
   source $yadr/zsh/aliases.zsh
 }
 
-alias ae='vim $yadr/zsh/aliases.zsh' #alias edit
+alias ae='nvim $yadr/zsh/aliases.zsh' #alias edit
 alias ar='source $yadr/zsh/aliases.zsh'  #alias reload
 alias gar="killall -HUP -u \"$USER\" zsh"  #global alias reload
 
@@ -63,10 +63,10 @@ fi
 alias :q='exit'
 
 # vimrc editing
-alias ve='vim ~/.vimrc'
+alias ve='nvim ~/.vimrc'
 
 # zsh profile editing
-alias ze='vim ~/.zshrc'
+alias ze='nvim ~/.zshrc'
 
 # Git Aliases
 alias gs='git status'
@@ -77,7 +77,7 @@ alias gsa='git stash apply'
 alias gsh='git show'
 alias gshw='git show'
 alias gshow='git show'
-alias gi='vim .gitignore'
+alias gi='nvim .gitignore'
 alias gcm='git ci -m'
 alias gcim='git ci -m'
 alias gci='git ci'
@@ -221,12 +221,12 @@ alias bci='brew cask install'
 alias brewu='brew update  && brew upgrade --all && brew cleanup && brew prune && brew doctor'
 
 # issuues
-alias visa='vim ~/.issuues/accept.json'
+alias visa='nvim ~/.issuues/accept.json'
 alias ia='issuues accept'
 
 # UU
-alias vuuconf='vim ~/.uu/config/uu-client.properties'
-alias vuesconf='vim ~/.ues/config/ues-client.properties'
+alias vuuconf='nvim ~/.uu/config/uu-client.properties'
+alias vuesconf='nvim ~/.ues/config/ues-client.properties'
 
 alias b2d='boot2docker'
 

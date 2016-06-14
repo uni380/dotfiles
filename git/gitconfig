@@ -110,7 +110,7 @@
   default = upstream
 [core]
   autocrlf = false
-  editor = vim
+  editor = nvim
 	excludesfile = ~/.yadr/git/gitignore
 [advice]
   statusHints = false
@@ -138,3 +138,5 @@
 [mergetool "sourcetree"]
 	cmd = /usr/local/bin/ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 	trustExitCode = true
+[commit]
+	template = /Users/uni380/.stCommitMsg
