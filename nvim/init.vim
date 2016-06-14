@@ -221,8 +221,11 @@ else
   let g:CSApprox_loaded = 1
 endif
 
-colorscheme base16-default
-set background=dark
+" http://johnmorales.com/blog/2015/01/09/base16-shell-tmux-vim-color-switching-dead-simple/
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
 
 " ================ Airline ==========================
 
