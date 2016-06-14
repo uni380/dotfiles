@@ -69,7 +69,7 @@ call plug#end()
 
 " ================ Basic settings ===================
 
-set relativenumber
+" set relativenumber
 set number
 set hidden
 set autoread
