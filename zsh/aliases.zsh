@@ -248,3 +248,6 @@ alias fn='find . -name'
 alias dk='docker'
 alias dc='docker-compose'
 alias dm='docker-machine'
+
+# Tmux
+alias tks='tmux kill-session -t'
