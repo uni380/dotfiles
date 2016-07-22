@@ -85,11 +85,14 @@ call plug#end()
 
 " ================ Basic settings ===================
 
-" set relativenumber
+set relativenumber
 set number
 set hidden
 set autoread
 set gdefault
+
+" Display tabs and trailing spaces visually
+set list listchars=tab:\ \ ,trail:·
 
 " By default don't wrap lines
 set nowrap
@@ -146,6 +149,18 @@ set smartcase       " ...unless we type a capital
 " Window/Tab/Split Manipulation
 " ==============================
 
+" Move between split windows by using the four directions H, L, K, J
+nnoremap <silent> <C-h> <C-w>h
+nnoremap <silent> <C-l> <C-w>l
+nnoremap <silent> <C-k> <C-w>k
+nnoremap <silent> <C-j> <C-w>j
+
+" Resize windows with arrow keys
+nnoremap <D-Up> <C-w>+
+nnoremap <D-Down> <C-w>-
+nnoremap <D-Left> <C-w><
+nnoremap <D-Right>  <C-w>>
+
 " Create window splits easier. The default
 " way is Ctrl-w,v and Ctrl-w,s. I remap
 " this to vv and ss
@@ -176,7 +191,7 @@ nnoremap <silent> ,y :bp<CR>
 nnoremap <silent> ,x :bn<CR>
 
 " Navigation
-nnoremap <silent> <leader>e :b#<CR>
+nnoremap <silent> <leader><space> :b#<CR>
 
 " easy expansion of the active file directory (from the 'Practical Vim' book)
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
@@ -204,10 +219,29 @@ nnoremap ` '
 "Go to last edit location with ,.
 nnoremap ,. '.
 
+" Make Ctrl-e jump to the end of the current line in the insert mode. This is
+" handy when you are in the middle of a line and would like to go to its end
+" without switching to the normal mode.
+inoremap <C-e> <C-o>$
+
 " Have the indent commands re-highlight the last visual selection to make
 " multiple indentations easier
 vnoremap > >gv
 vnoremap < <gv
+
+" Quickly select the text that was just pasted. This allows you to, e.g.,
+" indent it after pasting.
+noremap gV `[v`]
+
+" Allows you to easily replace the current word and all its occurrences.
+nnoremap <Leader>rw :%s/\<<C-r><C-w>\>/
+vnoremap <Leader>rw y:%s/<C-r>"/
+
+" Allows you to easily change the current word and all occurrences to something
+" else. The difference between this and the previous mapping is that the mapping
+" below pre-fills the current word for you to change.
+nnoremap <Leader>cw :%s/\<<C-r><C-w>\>/<C-r><C-w>
+vnoremap <Leader>cw y:%s/<C-r>"/<C-r>"
 
 " via: http://rails-bestpractices.com/posts/60-remove-trailing-whitespace
 " Strip trailing whitespace
@@ -278,10 +312,10 @@ let g:ctrlp_switch_buffer = 0
 " We don't want to use Ctrl-p as the mapping because
 " it interferes with YankRing (paste, then hit ctrl-p)
 let g:ctrlp_map = ',t'
-nnoremap <silent> ,t :CtrlP<CR>
+nnoremap <silent> <leader>t :CtrlP<CR>
 
 " Additional mapping for buffer search
-nnoremap <silent> ,b :CtrlPBuffer<cr>
+nnoremap <silent> <leader>b :CtrlPBuffer<cr>
 
 " Cmd-Shift-P to clear the cache
 nnoremap <silent> <D-P> :ClearCtrlPCache<cr>
@@ -289,6 +323,7 @@ nnoremap <silent> <D-P> :ClearCtrlPCache<cr>
 "Cmd-Shift-(M)ethod - jump to a method (tag in current file)
 "Ctrl-m is not good - it overrides behavior of Enter
 nnoremap <silent> <D-M> :CtrlPBufTag<CR>
+nnoremap <silent> <leader>m :CtrlPBufTag<cr>
 
 let g:ctrlp_root_markers=['.ctrlp']
 
@@ -321,6 +356,7 @@ let g:startify_bookmarks = [
   \ {'u': '~/.uu/config/uu-client.properties'},
   \ {'y': '~/.pry_history'},
   \ {'h': '~/.hammerspoon/init.lua'},
+  \ {'t': '~/.tmux.conf'},
   \ ]
 
 " ================ Showmarks ========================
