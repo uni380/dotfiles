@@ -21,12 +21,15 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-scripts/AutoTag'
+Plug 'Townk/vim-autoclose'
+Plug 'FooSoft/vim-argwrap'
 
 " Search
 Plug 'justinmk/vim-sneak'
 Plug 'rking/ag.vim'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'Lokaltog/vim-easymotion'
+Plug 'timakro/vim-searchant'
 
 " Appearance
 Plug 'chriskempson/base16-vim'
@@ -53,6 +56,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'tpope/vim-endwise'
+Plug 'airblade/vim-gitgutter'
 
 " Text objects
 Plug 'kana/vim-textobj-user'
@@ -63,6 +67,18 @@ Plug 'nelstrom/vim-textobj-rubyblock'           |  Plug 'kana/vim-textobj-user'
 Plug 'coderifous/textobj-word-column.vim'
 Plug 'vim-scripts/argtextobj.vim'
 Plug 'briandoll/change-inside-surroundings.vim'
+Plug 'michaeljsmith/vim-indent-object'
+
+" Code completion
+function! DoRemote(arg)
+  UpdateRemotePlugins
+endfunction
+Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+Plug 'Shougo/neco-vim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'junegunn/fzf', { 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " }}}
@@ -431,4 +447,26 @@ nmap sk :SplitjoinJoin<cr>
 let g:yankring_history_file = '.yankring-history'
 nnoremap ,yr :YRShow<CR>
 nnoremap C-y :YRShow<CR>
-" vim:foldmethod=marker:foldenable
+
+" ================ Deoplete =========================
+
+let g:deoplete#enable_at_startup = 1
+if !exists('g:deoplete#omni#input_patterns')
+  let g:deoplete#omni#input_patterns = {}
+endif
+" let g:deoplete#disable_auto_complete = 1
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
+let g:deoplete#sources = {}
+let g:deoplete#sources._ = ['buffer']
+
+" ================ FZF ==============================
+
+nnoremap <silent> <leader>zf :Files<cr>
+nnoremap <silent> <leader>zb :Buffers<cr>
+nnoremap <silent> <leader>zt :BTags<cr>
+
+" ================ ArgWrap ==========================
+
+nnoremap <silent> <leader>a :ArgWrap<CR>
+" vim:filetype=vim:foldmethod=marker:foldenable
