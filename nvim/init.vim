@@ -1,128 +1,66 @@
-let mapleader=","
+"
+" ~/config/nvim/init.vim
+" vim:filetype=vim:foldmethod=marker:foldenable
 
-" vim-plug (https://github.com/junegunn/vim-plug) settings {{{
-" Automatically install vim-plug and run PlugInstall if vim-plug not found
-if empty(glob('~/.config/nvim/autoload/plug.vim'))
-  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall | source $MYVIMRC
-endif
-
-" ================ Plugins ==========================
-
-call plug#begin('~/.vim/plugged')
-" General
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'mhinz/vim-startify'
-Plug 'tomtom/tcomment_vim'
-Plug 'skwp/YankRing.vim'
-Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
-Plug 'vim-scripts/AutoTag'
-Plug 'Townk/vim-autoclose'
-Plug 'FooSoft/vim-argwrap'
-
-" Search
-Plug 'justinmk/vim-sneak'
-Plug 'rking/ag.vim'
-Plug 'nelstrom/vim-visual-star-search'
-Plug 'Lokaltog/vim-easymotion'
-Plug 'timakro/vim-searchant'
-
-" Appearance
-Plug 'chriskempson/base16-vim'
-Plug 'morhetz/gruvbox'
-Plug 'sts10/vim-mustard'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'xsunsmile/showmarks'
-" Required for Gblame in terminal vim
-Plug 'godlygeek/csapprox'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
-" Languages and Syntax highlighting
-Plug 'vim-ruby/vim-ruby'
-Plug 'ecomba/vim-ruby-refactoring'
-Plug 'ck3g/vim-change-hash-syntax'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-rake'
-Plug 'tpope/vim-rbenv'
-Plug 'tpope/vim-bundler'
-Plug 'tpope/vim-git'
-Plug 'tpope/vim-fugitive'
-" Plug 'sheerun/vim-polyglot'
-Plug 'ekalinin/Dockerfile.vim'
-Plug 'AndrewRadev/splitjoin.vim'
-Plug 'tpope/vim-endwise'
-Plug 'airblade/vim-gitgutter'
-
-" Text objects
-Plug 'kana/vim-textobj-user'
-Plug 'bootleq/vim-textobj-rubysymbol'           |  Plug 'kana/vim-textobj-user'
-Plug 'kana/vim-textobj-entire'                  |  Plug 'kana/vim-textobj-user'
-Plug 'lucapette/vim-textobj-underscore'         |  Plug 'kana/vim-textobj-user'
-Plug 'nelstrom/vim-textobj-rubyblock'           |  Plug 'kana/vim-textobj-user'
-Plug 'coderifous/textobj-word-column.vim'
-Plug 'vim-scripts/argtextobj.vim'
-Plug 'briandoll/change-inside-surroundings.vim'
-Plug 'michaeljsmith/vim-indent-object'
-
-" Code completion
-function! DoRemote(arg)
-  UpdateRemotePlugins
-endfunction
-Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
-Plug 'Shougo/neco-vim'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'junegunn/fzf', { 'do': './install --bin' }
-Plug 'junegunn/fzf.vim'
-call plug#end()
-
-" }}}
-
-" ================ Basic settings ===================
+" Options - Appearance {{{
+" -----------------------------------------------------------------------------
 
 set relativenumber
 set number
-set hidden
-set autoread
-set gdefault
-
-" Display tabs and trailing spaces visually
 set list listchars=tab:\ \ ,trail:·
 
-" By default don't wrap lines
+if has("gui_running")
+  "tell the term has 256 colors
+  set t_Co=256
+else
+  let g:CSApprox_loaded = 1
+endif
+
+" http://johnmorales.com/blog/2015/01/09/base16-shell-tmux-vim-color-switching-dead-simple/
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
+
+" }}}
+" Options - Behaviour {{{
+" -----------------------------------------------------------------------------
+
+set hidden
+set autoread
 set nowrap
-
-" But do wrap on these types of files...
 autocmd FileType markdown setlocal wrap
-
-" j and k don't skip over wrapped lines in following FileTypes, unless given a count (helpful since I display relative line numbers in these file types)
-autocmd FileType markdown nnoremap <expr> j v:count ? 'j' : 'gj'
-autocmd FileType markdown nnoremap <expr> k v:count ? 'k' : 'gk'
 
 " if no filetype specified, set ft=markdown (alternative would be text)
 autocmd BufEnter * if &filetype == "" | setlocal ft=markdown | endif
 
-" ================ Persistent Undo ==================
-" Keep undo history across sessions, by storing in file.
-" Only works all the time.
 if has('persistent_undo') && !isdirectory(expand('~').'/.vim/backups')
   silent !mkdir ~/.vim/backups > /dev/null 2>&1
   set undodir=~/.vim/backups
   set undofile
 endif
 
-" ================ Turn Off Swap Files ==============
-
 set noswapfile
 set nobackup
 set nowb
 
-" ================ Indentation ======================
+set scrolloff=8         "Start scrolling when we're 8 lines away from margins
+set sidescrolloff=15
+set sidescroll=1
+
+" }}}
+" Options - Folding {{{
+" -----------------------------------------------------------------------------
+
+
+" }}}
+" Options - GUI {{{
+" -----------------------------------------------------------------------------
+
+
+" }}}
+" Options - Indents and Tabs {{{
+" -----------------------------------------------------------------------------
 
 set autoindent
 set smartindent
@@ -132,22 +70,25 @@ set softtabstop=2
 set tabstop=2
 set expandtab
 
-" ================ Scrolling ========================
+" }}}
+" Options - Searching {{{
+" -----------------------------------------------------------------------------
 
-set scrolloff=8         "Start scrolling when we're 8 lines away from margins
-set sidescrolloff=15
-set sidescroll=1
-
-" ================ Search ===========================
-
+set gdefault
 set incsearch       " Find the next match as we type the search
 set hlsearch        " Highlight searches by default
 set ignorecase      " Ignore case when searching...
 set smartcase       " ...unless we type a capital
 
-" ==============================
-" Window/Tab/Split Manipulation
-" ==============================
+" }}}
+" Mappings - General {{{
+" -----------------------------------------------------------------------------
+
+let mapleader=","
+
+" j and k don't skip over wrapped lines in following FileTypes, unless given a count (helpful since I display relative line numbers in these file types)
+autocmd FileType markdown nnoremap <expr> j v:count ? 'j' : 'gj'
+autocmd FileType markdown nnoremap <expr> k v:count ? 'k' : 'gk'
 
 " Move between split windows by using the four directions H, L, K, J
 nnoremap <silent> <C-h> <C-w>h
@@ -166,10 +107,6 @@ nnoremap <D-Right>  <C-w>>
 " this to vv and ss
 nnoremap <silent> vv <C-w>v
 nnoremap <silent> ss <C-w>s
-
-" ============================
-" Shortcuts for everyday tasks
-" ============================
 
 "Clear current search highlight by double tapping //
 nmap <silent> // :nohlsearch<CR>
@@ -259,31 +196,105 @@ endfunction
 command! StripTrailingWhitespaces call <SID>StripTrailingWhitespaces()
 nmap ,w :StripTrailingWhitespaces<CR>
 
-" ================ Appearance =======================
+" }}}
+" Mappings - Abbreviations {{{
+" -----------------------------------------------------------------------------
 
-" Make it beautiful - colors and fonts
+"Abbreviations, trigger by typing the abbreviation and hitting space
+abbr pry! require 'pry'; binding.pry
 
-if has("gui_running")
-  "tell the term has 256 colors
-  set t_Co=256
-  " set guifont=Anonymice\ Powerline,Anonymous\ Pro:h12
-else
-  let g:CSApprox_loaded = 1
+" }}}
+" Plugins Install {{{
+" -----------------------------------------------------------------------------
+
+" Automatically install vim-plug and run PlugInstall if vim-plug not found
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 
-" http://johnmorales.com/blog/2015/01/09/base16-shell-tmux-vim-color-switching-dead-simple/
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
+call plug#begin('~/.vim/plugged')
+" General
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'mhinz/vim-startify'
+Plug 'tomtom/tcomment_vim'
+Plug 'skwp/YankRing.vim'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'vim-scripts/AutoTag'
+Plug 'Townk/vim-autoclose'
+Plug 'FooSoft/vim-argwrap'
 
-" ================ Airline ==========================
+" Search
+Plug 'justinmk/vim-sneak'
+Plug 'rking/ag.vim'
+Plug 'nelstrom/vim-visual-star-search'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'timakro/vim-searchant'
+
+" Appearance
+Plug 'chriskempson/base16-vim'
+Plug 'morhetz/gruvbox'
+Plug 'sts10/vim-mustard'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'xsunsmile/showmarks'
+" Required for Gblame in terminal vim
+Plug 'godlygeek/csapprox'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" Languages and Syntax highlighting
+Plug 'vim-ruby/vim-ruby'
+Plug 'ecomba/vim-ruby-refactoring'
+Plug 'ck3g/vim-change-hash-syntax'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rake'
+Plug 'tpope/vim-rbenv'
+Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-git'
+Plug 'tpope/vim-fugitive'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'tpope/vim-endwise'
+Plug 'airblade/vim-gitgutter'
+
+" Text objects
+Plug 'kana/vim-textobj-user'
+Plug 'bootleq/vim-textobj-rubysymbol'           |  Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-entire'                  |  Plug 'kana/vim-textobj-user'
+Plug 'lucapette/vim-textobj-underscore'         |  Plug 'kana/vim-textobj-user'
+Plug 'nelstrom/vim-textobj-rubyblock'           |  Plug 'kana/vim-textobj-user'
+Plug 'coderifous/textobj-word-column.vim'
+Plug 'vim-scripts/argtextobj.vim'
+Plug 'briandoll/change-inside-surroundings.vim'
+Plug 'michaeljsmith/vim-indent-object'
+
+" Code completion
+function! DoRemote(arg)
+  UpdateRemotePlugins
+endfunction
+Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+Plug 'Shougo/neco-vim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'junegunn/fzf', { 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
+call plug#end()
+
+" }}}
+" Plugin Settings - Airline {{{
+" -----------------------------------------------------------------------------
 
 let g:airline_powerline_fonts = 0
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 
-" ================ CtrlP ============================
+" }}}
+" Plugin Settings - CtrlP {{{
+" -----------------------------------------------------------------------------
 
 if exists("g:ctrlp_user_command")
   unlet g:ctrlp_user_command
@@ -327,12 +338,9 @@ nnoremap <silent> <leader>m :CtrlPBufTag<cr>
 
 let g:ctrlp_root_markers=['.ctrlp']
 
-" ================ Abbreviations ====================
-
-"Abbreviations, trigger by typing the abbreviation and hitting space
-abbr pry! require 'pry'; binding.pry
-
-" ================ Startify =========================
+" }}}
+" Plugin Settings - Startify {{{
+" -----------------------------------------------------------------------------
 
 nnoremap <silent> <leader>st :Startify<CR>
 
@@ -359,27 +367,37 @@ let g:startify_bookmarks = [
   \ {'t': '~/.tmux.conf'},
   \ ]
 
-" ================ Showmarks ========================
+" }}}
+" Plugin Settings - Showmarks {{{
+" -----------------------------------------------------------------------------
 
 " Tell showmarks to not include the various brace marks (),{}, etc
 let g:showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXY"
 
-" ================ Sneak ============================
+" }}}
+" Plugin Settings - Sneak {{{
+" -----------------------------------------------------------------------------
 
 nmap <Space> <Plug>SneakForward
 
-" ================ Ag ===============================
+" }}}
+" Plugin Settings - Ag {{{
+" -----------------------------------------------------------------------------
 
 " Open the Ag command and place the cursor into the quotes
 nmap ,ag :Ag ""<Left>
 nmap ,af :AgFile ""<Left>
 
-" ================ AutoTag ==========================
+" }}}
+" Plugin Settings - AutoTag {{{
+" -----------------------------------------------------------------------------
 
 " Seems to have problems with some vim files
 let g:autotagExcludeSuffixes="tml.xml.text.txt.vim"
 
-" ================ EasyMotion =======================
+" }}}
+" Plugin Settings - EasyMotion {{{
+" -----------------------------------------------------------------------------
 
 " These keys are easier to type than the default set
 " We exclude semicolon because it's hard to read and
@@ -390,7 +408,9 @@ let g:EasyMotion_keys='asdfjkoweriop'
 nmap ,<ESC> ,,w
 nmap ,<S-ESC> ,,b
 
-" ================ Fugitive =========================
+" }}}
+" Plugin Settings - Fugitive {{{
+" -----------------------------------------------------------------------------
 
 " The tree buffer makes it easy to drill down through the directories of your
 " git repository, but it’s not obvious how you could go up a level to the
@@ -411,7 +431,9 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 nnoremap <silent> ,dg :diffget<CR>
 nnoremap <silent> ,dp :diffput<CR>
 
-" ================ tComment =========================
+" }}}
+" Plugin Settings - tComment {{{
+" -----------------------------------------------------------------------------
 
 " extensions for tComment plugin. Normally
 " tComment maps 'gcc' to comment current line
@@ -419,7 +441,9 @@ nnoremap <silent> ,dp :diffput<CR>
 " using tComment's built in <c-_>p mapping
 nmap <silent> gcp <c-_>p
 
-" ================ Unimpaired =======================
+" }}}
+" Plugin Settings - Unimpaired {{{
+" -----------------------------------------------------------------------------
 
 " https://github.com/carlhuda/janus/blob/master/vimrc
 
@@ -432,13 +456,17 @@ nmap <C-Down> ]e
 vmap <C-Up> [egv
 vmap <C-Down> ]egv
 
-" ================ Indent Guides ====================
+" }}}
+" Plugin Settings - Indent Guides {{{
+" -----------------------------------------------------------------------------
 
 let g:indent_guides_auto_colors = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 
-" ================ Surround =========================
+" }}}
+" Plugin Settings - Surround {{{
+" -----------------------------------------------------------------------------
 
 " ,# Surround a word with #{ruby interpolation}
 map ,# ysiw#
@@ -473,18 +501,24 @@ vmap ,{ c{<C-R>"}<ESC>
 
 map ,` ysiw`
 
-" ================ SplitJoin ========================
+" }}}
+" Plugin Settings - SplitJoin {{{
+" -----------------------------------------------------------------------------
 
 nmap sj :SplitjoinSplit<cr>
 nmap sk :SplitjoinJoin<cr>
 
-" ================ YankRing =========================
+" }}}
+" Plugin Settings - YankRing {{{
+" -----------------------------------------------------------------------------
 
 let g:yankring_history_file = '.yankring-history'
 nnoremap ,yr :YRShow<CR>
 nnoremap C-y :YRShow<CR>
 
-" ================ Deoplete =========================
+" }}}
+" Plugin Settings - Deoplete {{{
+" -----------------------------------------------------------------------------
 
 let g:deoplete#enable_at_startup = 1
 if !exists('g:deoplete#omni#input_patterns')
@@ -496,13 +530,18 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 let g:deoplete#sources = {}
 let g:deoplete#sources._ = ['buffer']
 
-" ================ FZF ==============================
+" }}}
+" Plugin Settings - FZF {{{
+" -----------------------------------------------------------------------------
 
 nnoremap <silent> <leader>zf :Files<cr>
 nnoremap <silent> <leader>zb :Buffers<cr>
 nnoremap <silent> <leader>zt :BTags<cr>
 
-" ================ ArgWrap ==========================
+" }}}
+" Plugin Settings - ArgWrap {{{
+" -----------------------------------------------------------------------------
 
 nnoremap <silent> <leader>a :ArgWrap<CR>
-" vim:filetype=vim:foldmethod=marker:foldenable
+
+" }}}
