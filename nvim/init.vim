@@ -9,7 +9,7 @@ set relativenumber
 set number
 set list listchars=tab:\ \ ,trail:·
 
-if has("gui_running")
+if exists("neovim_dot_app")
   "tell the term has 256 colors
   set t_Co=256
 else
@@ -279,12 +279,19 @@ Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " }}}
-" Plugin Settings - Base16 {{{
+" Plugin Settings - Colorscheme {{{
 
-" http://johnmorales.com/blog/2015/01/09/base16-shell-tmux-vim-color-switching-dead-simple/
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
+" XXX Don't know why but base16 dark colorschemes don't work with Neovim.app
+if exists("neovim_dot_app")
+  set background=dark
+  let g:gruvbox_contrast_dark="hard"
+  colorscheme gruvbox
+else
+  " http://johnmorales.com/blog/2015/01/09/base16-shell-tmux-vim-color-switching-dead-simple/
+  if filereadable(expand("~/.vimrc_background"))
+    let base16colorspace=256
+    source ~/.vimrc_background
+  endif
 endif
 
 " }}}
