@@ -16,12 +16,6 @@ else
   let g:CSApprox_loaded = 1
 endif
 
-" http://johnmorales.com/blog/2015/01/09/base16-shell-tmux-vim-color-switching-dead-simple/
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
-
 " }}}
 " Options - Behaviour {{{
 " -----------------------------------------------------------------------------
@@ -283,6 +277,15 @@ Plug 'honza/vim-snippets'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 call plug#end()
+
+" }}}
+" Plugin Settings - Base16 {{{
+
+" http://johnmorales.com/blog/2015/01/09/base16-shell-tmux-vim-color-switching-dead-simple/
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
 
 " }}}
 " Plugin Settings - Airline {{{
