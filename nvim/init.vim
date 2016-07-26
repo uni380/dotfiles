@@ -545,6 +545,11 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 let g:deoplete#sources = {}
 let g:deoplete#sources._ = ['buffer']
 
+" Map standard Ctrl-N completion to Ctrl-Space
+inoremap <C-Space> <C-n>
+
+inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
+
 " }}}
 " Plugin Settings - FZF {{{
 " -----------------------------------------------------------------------------
