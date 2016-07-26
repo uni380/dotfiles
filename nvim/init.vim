@@ -350,7 +350,8 @@ nnoremap <silent> <D-P> :ClearCtrlPCache<cr>
 nnoremap <silent> <D-M> :CtrlPBufTag<CR>
 nnoremap <silent> <leader>m :CtrlPBufTag<cr>
 
-let g:ctrlp_root_markers=['.ctrlp']
+let g:ctrlp_root_markers = ['.ctrlp']
+let g:ctrlp_reuse_window = 'startify'
 
 " }}}
 " Plugin Settings - Startify {{{
