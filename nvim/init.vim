@@ -287,11 +287,13 @@ if exists("neovim_dot_app")
   let g:gruvbox_contrast_dark="hard"
   colorscheme gruvbox
 else
-  " http://johnmorales.com/blog/2015/01/09/base16-shell-tmux-vim-color-switching-dead-simple/
-  if filereadable(expand("~/.vimrc_background"))
-    let base16colorspace=256
-    source ~/.vimrc_background
-  endif
+  set background=dark
+  colorscheme base16-tomorrow
+  " " http://johnmorales.com/blog/2015/01/09/base16-shell-tmux-vim-color-switching-dead-simple/
+  " if filereadable(expand("~/.vimrc_background"))
+  "   let base16colorspace=256
+  "   source ~/.vimrc_background
+  " endif
 endif
 
 " }}}
