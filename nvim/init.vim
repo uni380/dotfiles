@@ -261,12 +261,10 @@ Plug 'airblade/vim-gitgutter'
 Plug 'kana/vim-textobj-user'
 Plug 'bootleq/vim-textobj-rubysymbol'           |  Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'                  |  Plug 'kana/vim-textobj-user'
-Plug 'lucapette/vim-textobj-underscore'         |  Plug 'kana/vim-textobj-user'
 Plug 'nelstrom/vim-textobj-rubyblock'           |  Plug 'kana/vim-textobj-user'
 Plug 'coderifous/textobj-word-column.vim'
-Plug 'vim-scripts/argtextobj.vim'
-Plug 'briandoll/change-inside-surroundings.vim'
 Plug 'michaeljsmith/vim-indent-object'
+Plug 'wellle/targets.vim'
 
 " Code completion
 function! DoRemote(arg)
