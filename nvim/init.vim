@@ -288,6 +288,7 @@ if exists("neovim_dot_app")
   colorscheme gruvbox
 else
   set background=dark
+  let base16colorspace=256
   colorscheme base16-tomorrow
   " " http://johnmorales.com/blog/2015/01/09/base16-shell-tmux-vim-color-switching-dead-simple/
   " if filereadable(expand("~/.vimrc_background"))
