@@ -82,6 +82,8 @@ set smartcase       " ...unless we type a capital
 
 let mapleader=","
 
+nnoremap <silent> <space>s :w<CR>
+
 " j and k don't skip over wrapped lines in following FileTypes, unless given a count (helpful since I display relative line numbers in these file types)
 autocmd FileType markdown nnoremap <expr> j v:count ? 'j' : 'gj'
 autocmd FileType markdown nnoremap <expr> k v:count ? 'k' : 'gk'
