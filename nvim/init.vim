@@ -223,6 +223,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'vim-scripts/AutoTag'
 Plug 'Townk/vim-autoclose'
 Plug 'FooSoft/vim-argwrap'
+Plug 'christoomey/vim-tmux-navigator'
 
 " Search
 Plug 'justinmk/vim-sneak'
