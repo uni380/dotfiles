@@ -262,6 +262,7 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'tpope/vim-endwise'
 Plug 'airblade/vim-gitgutter'
+Plug 'janko-m/vim-test'
 
 " Text objects
 Plug 'kana/vim-textobj-user'
@@ -568,5 +569,18 @@ nnoremap <silent> <leader>zt :BTags<cr>
 " -----------------------------------------------------------------------------
 
 nnoremap <silent> <leader>a :ArgWrap<CR>
+
+" }}}
+" Plugin Settings - vim-test {{{
+" -----------------------------------------------------------------------------
+
+let test#ruby#minitest#file_pattern = 'test_.*\.rb'
+let test#ruby#bundle_exec = 0
+
+nnoremap <silent> <leader>tn :TestNearest<CR>
+nnoremap <silent> <leader>tf :TestFile<CR>
+nnoremap <silent> <leader>ts :TestSuite<CR>
+nnoremap <silent> <leader>tl :TestLast<CR>
+nnoremap <silent> <leader>tv :TestVisit<CR>
 
 " }}}
