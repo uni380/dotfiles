@@ -20,12 +20,12 @@ endif
 " Options - Behaviour {{{
 " -----------------------------------------------------------------------------
 
+autocmd BufRead * filetype detect
+
 set hidden
 set autoread
 set nowrap
 autocmd FileType markdown setlocal wrap
-
-autocmd BufEnter *.json setlocal filetype=json
 
 " if no filetype specified, set ft=markdown (alternative would be text)
 autocmd BufEnter * if &filetype == "" | setlocal ft=markdown | endif
