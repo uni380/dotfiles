@@ -92,10 +92,10 @@ autocmd FileType markdown nnoremap <expr> j v:count ? 'j' : 'gj'
 autocmd FileType markdown nnoremap <expr> k v:count ? 'k' : 'gk'
 
 " Move between split windows by using the four directions H, L, K, J
-nnoremap <silent> <C-h> <C-w>h
-nnoremap <silent> <C-l> <C-w>l
-nnoremap <silent> <C-k> <C-w>k
-nnoremap <silent> <C-j> <C-w>j
+" nnoremap <silent> <C-h> <C-w>h
+" nnoremap <silent> <C-l> <C-w>l
+" nnoremap <silent> <C-k> <C-w>k
+" nnoremap <silent> <C-j> <C-w>j
 
 " Resize windows with arrow keys
 nnoremap <D-Up> <C-w>+
