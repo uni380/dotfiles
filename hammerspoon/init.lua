@@ -301,6 +301,23 @@ function hs.window.fullscreenHeight(win)
   })
 end
 
+-- +------------------+
+-- |                  |
+-- |    +--------+    +--> minY
+-- |    |  HERE  |    |
+-- |    +--------+    |
+-- |                  |
+-- +------------------+
+function hs.window.center(win)
+  local minFrame = hs.screen.minFrame(win:screen(), false)
+  win:setFrame({
+    x = win:screen():frame().w/2 - minFrame.w/3,
+    y = win:screen():frame().h/2 - minFrame.h/3,
+    w = minFrame.w/3*2,
+    h = minFrame.h/3*2
+  })
+end
+
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
@@ -389,7 +406,6 @@ end
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
--- TODO Add threeQuartersLeft, threeQuartersRight, leftQuarter and rightQuarter
 
 --   1/4
 -- +----+------------+
@@ -490,6 +506,10 @@ end)
 
 hs.hotkey.bind(super, "B", function()
   hs.window.focusedWindow():downLeft()
+end)
+
+hs.hotkey.bind(super, "H", function()
+  hs.window.focusedWindow():center()
 end)
 
 hs.hotkey.bind(super, "+", function()
