@@ -1,0 +1,68 @@
+# ~/.tmuxinator/hobby.yml
+
+name: hobby
+root: ~/code/hobby
+
+# Optional tmux socket
+# socket_name: foo
+
+# Runs before everything. Use it to start daemons etc.
+# pre: sudo /etc/rc.d/mysqld start
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: rbenv shell 2.0.0-p247
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+# Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
+# tmux_command: byobu
+
+windows:
+  - iterations:
+      layout: even-horizontal
+      panes:
+        - cd iterations
+        - cd iterations
+  - ts:
+      layout: tiled
+      panes:
+        - cd ts && nvim lib/ts.rb lib/ts/runner.rb
+        - cd ts && nvim test/test_ts.rb
+        - cd ts && git status
+        - pry
+  - logs:
+      layout: even-horizontal
+      panes:
+        - cd logs && nvim features/download.feature lib/logs/download_controller.rb lib/logs/cli.rb
+        - cd logs && git status
+  - uuapp:
+      layout: even-vertical
+      panes:
+        - cd uuapp && nvim lib/uuapp/cli.rb
+        - cd uuapp && git status
+  - uuc:
+      layout: even-horizontal
+      panes:
+        - cd uuc && nvim uuc.gemspec
+        - cd uuc && git status
+  - tsr:
+      layout: even-horizontal
+      panes:
+        - cd tsr && nvim lib/tsr/cli.rb lib/tsr/preprocessor.rb
+        - cd tsr && git status
+  - uudoc:
+      layout: even-horizontal
+      panes:
+        - cd uudoc && nvim bin/uudoc lib/uudoc/cli.rb
+        - cd uudoc && git status
+  - issuues:
+      layout: even-horizontal
+      panes:
+        - cd issuues && nvim bin/issuues lib/issuues/cli.rb lib/issuues/issue_accept.rb
+        - cd issuues && git status
+  - bup:
+      layout: even-horizontal
+      panes:
+        - cd bup && nvim lib/bup/commands/iteration.rb
+        - cd bup && git status
