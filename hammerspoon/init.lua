@@ -608,11 +608,13 @@ function ssidChangedCallback()
     hs.notify.show("Hammerspoon", "", "Volume set to 0")
   end
 
-  if (newSSID == "DTC-VNET" or newSSID == "UVS" or newSSID == "EBC") and newSSID ~= "DTC-VNET" and newSSID ~= "UVS" and newSSID ~= "EBC" then
+  -- TODO Set mbair.local to 192.168.1.102 when on DTC-LNET or 192.168.100.113 when on Alternative4
+
+  if (newSSID == "DTC-LNET" or newSSID == "DTC-VNET" or newSSID == "UVS" or newSSID == "EBC") and newSSID ~= "DTC-LNET" and newSSID ~= "DTC-VNET" and newSSID ~= "UVS" and newSSID ~= "EBC" then
     -- Just joined one of work WiFi networks
     hs.notify.show("Hammerspoon", "", "Let's get to work :)")
     hs.application.open("Adium")
-    hs.application.open("Slack")
+    -- hs.application.open("Slack")
   end
 
   if newSSID == homeSSID and lastSSID ~= homeSSID then
