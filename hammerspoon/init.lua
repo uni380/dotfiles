@@ -2,14 +2,83 @@ local hyper = {"cmd", "ctrl", "alt", "shift"}
 local super = {"cmd", "ctrl", "alt"}
 
 --------------------------------------------------------------------------------
--- Reusable functions {{{
+-- Hyper key {{{
 --------------------------------------------------------------------------------
 
-function switchApp(key, appName)
-  hs.hotkey.bind(hyper, key, function()
-    hs.application.launchOrFocus(appName)
-  end)
+--------------------------------------------------------------------------------
+-- Taken from https://gist.github.com/ttscoff/cce98a711b5476166792d5e6f1ac5907
+--------------------------------------------------------------------------------
+
+-- A global variable for the Hyper Mode
+k = hs.hotkey.modal.new({}, "F17")
+
+launch = function(appName)
+  hs.application.launchOrFocus(appName)
+  k.triggered = true
 end
+
+-- Single keybinding for app launch
+singleApps = {
+  {'a', 'Adium'},
+  {'b', 'RubyMine'},
+  {'c', 'Google Chrome'},
+  {'d', 'Dash'},
+  {'e', 'SourceTree'},
+  {'f', 'Path Finder'},
+  {'g', 'TogglDesktop'},
+  {'i', 'Eclipse'},
+  {'k', 'Slack'},
+  {'l', 'Sublime Text'},
+  {'m', 'TextMate'},
+  {'n', 'nvALT'},
+  {'p', 'Postman'},
+  {'s', 'Safari'},
+  {'t', 'iTerm'},
+  {'u', 'iTunes'},
+  {'v', 'MacVim'},
+  {'x', 'Firefox'},
+  {'w', 'Neovim'},
+}
+
+for i, app in ipairs(singleApps) do
+  k:bind({}, app[1], function() launch(app[2]); k:exit(); end)
+end
+
+-- Sequential keybindings, e.g. Hyper-q,Up for Move to One Screen North
+a = hs.hotkey.modal.new({}, "F16")
+
+a:bind({}, "Up", function() hs.window.focusedWindow():moveOneScreenNorth(); a:exit(); end)
+a:bind({}, "Down", function() hs.window.focusedWindow():moveOneScreenSouth(); a:exit(); end)
+a:bind({}, "Left", function() hs.window.focusedWindow():moveOneScreenWest(); a:exit(); end)
+a:bind({}, "Right", function() hs.window.focusedWindow():moveOneScreenEast(); a:exit(); end)
+
+pressedA = function() a:enter() end
+releasedA = function() end
+k:bind({}, 'a', nil, pressedA, releasedA)
+
+-- Enter Hyper Mode when F18 (Hyper/Capslock) is pressed
+pressedF18 = function()
+  k.triggered = false
+  k:enter()
+end
+
+-- Leave Hyper Mode when F18 (Hyper/Capslock) is pressed,
+--   send ESCAPE if no other keys are pressed.
+releasedF18 = function()
+  k:exit()
+  if not k.triggered then
+    hs.eventtap.keyStroke({}, 'ESCAPE')
+  end
+end
+
+-- Bind the Hyper key
+f18 = hs.hotkey.bind({}, 'F18', pressedF18, releasedF18)
+
+-- }}}
+
+--------------------------------------------------------------------------------
+-- Reusable functions {{{
+--------------------------------------------------------------------------------
 
 --------------------------------------------------------------------------------
 -- Taken from https://github.com/rtoshiro/hammerspoon-init/blob/master/init.lua
@@ -542,52 +611,6 @@ end)
 
 hs.hotkey.bind(super, "C", function() -- Super+C
   hs.window.focusedWindow():fullscreenHeight()
-end)
--- }}}
-
---------------------------------------------------------------------------------
--- App switching {{{
---------------------------------------------------------------------------------
-
-switchApp("A", "Adium")
-switchApp("B", "RubyMine")
-switchApp("C", "Google Chrome")
-switchApp("D", "Dash")
-switchApp("E", "SourceTree")
-switchApp("F", "Path Finder")
-switchApp("G", "TogglDesktop")
-switchApp("K", "Slack")
-switchApp("L", "Sublime Text")
-switchApp("I", "Eclipse")
-switchApp("M", "TextMate")
-switchApp("N", "nvALT")
-switchApp("P", "Postman")
-switchApp("S", "Safari")
-switchApp("T", "iTerm")
-switchApp("U", "iTunes")
-switchApp("V", "MacVim")
-switchApp("X", "Firefox")
-switchApp("W", "Neovim")
--- }}}
-
---------------------------------------------------------------------------------
--- Window movement {{{
---------------------------------------------------------------------------------
-
-hs.hotkey.bind(hyper, "Up", function()
-  hs.window.focusedWindow():moveOneScreenNorth()
-end)
-
-hs.hotkey.bind(hyper, "Down", function()
-  hs.window.focusedWindow():moveOneScreenSouth()
-end)
-
-hs.hotkey.bind(hyper, "Left", function()
-  hs.window.focusedWindow():moveOneScreenWest()
-end)
-
-hs.hotkey.bind(hyper, "Right", function()
-  hs.window.focusedWindow():moveOneScreenEast()
 end)
 -- }}}
 
