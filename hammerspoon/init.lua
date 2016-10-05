@@ -44,17 +44,11 @@ for i, app in ipairs(singleApps) do
   k:bind({}, app[1], function() launch(app[2]); k:exit(); end)
 end
 
--- Sequential keybindings, e.g. Hyper-q,Up for Move to One Screen North
-a = hs.hotkey.modal.new({}, "F16")
-
-a:bind({}, "Up", function() hs.window.focusedWindow():moveOneScreenNorth(); a:exit(); end)
-a:bind({}, "Down", function() hs.window.focusedWindow():moveOneScreenSouth(); a:exit(); end)
-a:bind({}, "Left", function() hs.window.focusedWindow():moveOneScreenWest(); a:exit(); end)
-a:bind({}, "Right", function() hs.window.focusedWindow():moveOneScreenEast(); a:exit(); end)
-
-pressedA = function() a:enter() end
-releasedA = function() end
-k:bind({}, 'a', nil, pressedA, releasedA)
+-- Window movement
+k:bind({}, "Up", function() hs.window.focusedWindow():moveOneScreenNorth(); k:exit(); end)
+k:bind({}, "Down", function() hs.window.focusedWindow():moveOneScreenSouth(); k:exit(); end)
+k:bind({}, "Left", function() hs.window.focusedWindow():moveOneScreenWest(); k:exit(); end)
+k:bind({}, "Right", function() hs.window.focusedWindow():moveOneScreenEast(); k:exit(); end)
 
 -- Enter Hyper Mode when F18 (Hyper/Capslock) is pressed
 pressedF18 = function()
