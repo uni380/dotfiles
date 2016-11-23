@@ -12,6 +12,8 @@ local super = {"cmd", "ctrl", "alt"}
 -- A global variable for the Hyper Mode
 k = hs.hotkey.modal.new({}, "F17")
 
+k:bind({}, '<', nil, function() hs.eventtap.keyStroke({"shift","alt"}, '§') end)
+
 launch = function(appName)
   hs.application.launchOrFocus(appName)
   k.triggered = true
