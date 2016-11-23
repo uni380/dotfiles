@@ -49,10 +49,10 @@ let g:ctrlp_switch_buffer = 0
 " We don't want to use Ctrl-p as the mapping because
 " it interferes with YankRing (paste, then hit ctrl-p)
 let g:ctrlp_map = ',t'
-nnoremap <silent> <leader>t :CtrlP<CR>
+nnoremap <silent> <Leader>t :CtrlP<CR>
 
 " Additional mapping for buffer search
-nnoremap <silent> <leader>b :CtrlPBuffer<cr>
+nnoremap <silent> <Leader>b :CtrlPBuffer<cr>
 
 " Cmd-Shift-P to clear the cache
 nnoremap <silent> <D-P> :ClearCtrlPCache<cr>
@@ -60,7 +60,7 @@ nnoremap <silent> <D-P> :ClearCtrlPCache<cr>
 "Cmd-Shift-(M)ethod - jump to a method (tag in current file)
 "Ctrl-m is not good - it overrides behavior of Enter
 nnoremap <silent> <D-M> :CtrlPBufTag<CR>
-nnoremap <silent> <leader>m :CtrlPBufTag<cr>
+nnoremap <silent> <Leader>m :CtrlPBufTag<cr>
 
 let g:ctrlp_root_markers = ['.ctrlp']
 let g:ctrlp_reuse_window = 'startify'
@@ -68,7 +68,7 @@ let g:ctrlp_reuse_window = 'startify'
 " -----------------------------------------------------------------------------
 " Plugin Settings - Startify
 
-nnoremap <silent> <leader>st :Startify<CR>
+nnoremap <silent> <Leader>st :Startify<CR>
 
 function! s:filter_header(lines) abort
     let longest_line   = max(map(copy(a:lines), 'len(v:val)'))
@@ -258,14 +258,14 @@ inoremap <expr><Space> pumvisible() ? "\<C-n>\<C-y>" : "\<Space>"
 " -----------------------------------------------------------------------------
 " Plugin Settings - FZF
 
-nnoremap <silent> <leader>zf :GFiles<cr>
-nnoremap <silent> <leader>zb :Buffers<cr>
-nnoremap <silent> <leader>zt :BTags<cr>
+nnoremap <silent> <Leader>zf :GFiles<cr>
+nnoremap <silent> <Leader>zb :Buffers<cr>
+nnoremap <silent> <Leader>zt :BTags<cr>
 
 " -----------------------------------------------------------------------------
 " Plugin Settings - ArgWrap
 
-nnoremap <silent> <leader>a :ArgWrap<CR>
+nnoremap <silent> <Leader>a :ArgWrap<CR>
 
 " -----------------------------------------------------------------------------
 " Plugin Settings - vim-test
@@ -273,9 +273,9 @@ nnoremap <silent> <leader>a :ArgWrap<CR>
 let test#ruby#minitest#file_pattern = 'test_.*\.rb'
 let test#ruby#bundle_exec = 0
 
-nnoremap <silent> <leader>tn :TestNearest<CR>
-nnoremap <silent> <leader>tf :TestFile<CR>
-nnoremap <silent> <leader>ts :TestSuite<CR>
-nnoremap <silent> <leader>tl :TestLast<CR>
-nnoremap <silent> <leader>tv :TestVisit<CR>
+nnoremap <silent> <Leader>tn :TestNearest<CR>
+nnoremap <silent> <Leader>tf :TestFile<CR>
+nnoremap <silent> <Leader>ts :TestSuite<CR>
+nnoremap <silent> <Leader>tl :TestLast<CR>
+nnoremap <silent> <Leader>tv :TestVisit<CR>
 
