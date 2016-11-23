@@ -566,7 +566,7 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 autocmd CompleteDone * pclose
 
 let g:deoplete#sources = {}
-let g:deoplete#sources._ = ['buffer']
+let g:deoplete#sources._ = []
 
 " Map standard Ctrl-N completion to Ctrl-Space
 inoremap <C-Space> <C-n>
