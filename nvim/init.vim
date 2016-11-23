@@ -563,6 +563,7 @@ if !exists('g:deoplete#omni#input_patterns')
 endif
 " let g:deoplete#disable_auto_complete = 1
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+autocmd CompleteDone * pclose
 
 let g:deoplete#sources = {}
 let g:deoplete#sources._ = ['buffer']
@@ -570,7 +571,7 @@ let g:deoplete#sources._ = ['buffer']
 " Map standard Ctrl-N completion to Ctrl-Space
 inoremap <C-Space> <C-n>
 
-inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
+inoremap <expr><Space> pumvisible() ? "\<C-n>\<C-y>" : "\<Space>"
 
 " }}}
 " Plugin Settings - FZF {{{
