@@ -32,6 +32,8 @@ autocmd FileType markdown setlocal wrap
 " if no filetype specified, set ft=markdown (alternative would be text)
 autocmd BufEnter * if &filetype == "" | setlocal ft=markdown | endif
 
+autocmd BufRead,BufNewFile *.bork set filetype=sh
+
 if has('persistent_undo') && !isdirectory(expand('~').'/.vim/backups')
   silent !mkdir ~/.vim/backups > /dev/null 2>&1
   set undodir=~/.vim/backups
