@@ -232,6 +232,7 @@ alias b2d='boot2docker'
 
 alias ysg='yard server --gems'
 alias jc='jconsole &'
+alias jvvm='jvisualvm &'
 
 alias rbs='rbenv shell'
 alias rbsu='rbenv shell --unset'
@@ -251,3 +252,4 @@ alias dm='docker-machine'
 
 # Tmux
 alias tks='tmux kill-session -t'
+alias mux='tmuxinator'
