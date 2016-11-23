@@ -33,13 +33,14 @@ singleApps = {
   {'l', 'Sublime Text'},
   {'m', 'TextMate'},
   {'n', 'nvALT'},
+  {'o', 'Todoist'},
   {'p', 'Postman'},
   {'s', 'Safari'},
   {'t', 'iTerm'},
   {'u', 'iTunes'},
   {'v', 'MacVim'},
   {'x', 'Firefox'},
-  {'w', 'Neovim'},
+  {'w', 'VimR'},
 }
 
 for i, app in ipairs(singleApps) do
