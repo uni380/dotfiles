@@ -20,7 +20,6 @@ Plug 'vim-scripts/AutoTag'
 Plug 'Townk/vim-autoclose'
 Plug 'FooSoft/vim-argwrap'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'takac/vim-hardtime'
 
 " Search
 " Plug 'justinmk/vim-sneak'

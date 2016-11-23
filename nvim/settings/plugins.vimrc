@@ -279,8 +279,3 @@ nnoremap <silent> <leader>ts :TestSuite<CR>
 nnoremap <silent> <leader>tl :TestLast<CR>
 nnoremap <silent> <leader>tv :TestVisit<CR>
 
-" -----------------------------------------------------------------------------
-" Plugin Settings - vim-hardtime
-
-let g:hardtime_default_on = 1
-
