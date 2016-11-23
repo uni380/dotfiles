@@ -1,7 +1,7 @@
-# ~/.tmuxinator/c3_or.yml
+# ~/.tmuxinator/logstore.yml
 
-name: c3_or
-root: ~/code/work/git
+name: logstore
+root: ~/code/work/git/uu.logstore
 
 # Optional tmux socket
 # socket_name: foo
@@ -28,10 +28,16 @@ root: ~/code/work/git
 # post: tmux -CC attach -t c3_or
 
 windows:
-  - c3-gem: cd uu.c3/uu_c3
-  - c3-cmd: cd uu.c3/uu_c3-cmd
-  - c3-appbox: cd uu.c3/uu_c3-appbox
-  - or-gem: cd uu.operationregistry/uu_operation_registry
-  - or-cmd: cd uu.operationregistry/uu_operation_registry-cmd
-  - or-appbox: cd uu.operationregistry/uu_operation_registry-appbox
+  - gem: cd uu_logstore
+  - cmd: cd uu_logstore-cmd
+  - fluentd:
+      layout: tiled
+      panes:
+        - cd uu_logstore-fluentd; e lib/fluent/plugin/filter_split_large_records.rb
+        - cd fluentd; e fluent.conf
+        - cd fluentd; echo '# ./build_docker_image.sh or ./run_fluentd.sh'
+        - cd fluentd; ls test/*
+  - graylog:
+    - cd fluentd; echo '# ./run_graylog.sh'
+  - appbox: cd uu_logstore-appbox; rbenv shell jruby-1.7.21
   - irb:

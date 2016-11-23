@@ -1,7 +1,7 @@
-# ~/.tmuxinator/c3_or.yml
+# ~/.tmuxinator/logstore-fluentd.yml
 
-name: c3_or
-root: ~/code/work/git
+name: logstore-fluentd
+root: ~/code/docker-playground/fluentd
 
 # Optional tmux socket
 # socket_name: foo
@@ -25,13 +25,12 @@ root: ~/code/work/git
 # attach: false
 
 # Runs after everything. Use it to attach to tmux with custom options etc.
-# post: tmux -CC attach -t c3_or
+# post: tmux -CC attach -t dtc-codebrag
 
 windows:
-  - c3-gem: cd uu.c3/uu_c3
-  - c3-cmd: cd uu.c3/uu_c3-cmd
-  - c3-appbox: cd uu.c3/uu_c3-appbox
-  - or-gem: cd uu.operationregistry/uu_operation_registry
-  - or-cmd: cd uu.operationregistry/uu_operation_registry-cmd
-  - or-appbox: cd uu.operationregistry/uu_operation_registry-appbox
-  - irb:
+  - editor: nvim
+  - fluent:
+    layout: main-horizontal
+    panes:
+      - echo "Start Fluentd server like this:\nfluentd -c in_docker.conf"
+      - echo "Send messages like this:\ndocker run --rm --log-driver=fluentd --log-opt fluentd-address=192.168.1.102:24224 --log-opt 'tag=docker.{{.Name}}' ubuntu echo \"Hello Fluentd\""

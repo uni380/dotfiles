@@ -8,10 +8,11 @@ root: ~/code/work/git/uu.cloud/uu_cloud-devenv
 
 # Runs before everything. Use it to start daemons etc.
 # pre: sudo /etc/rc.d/mysqld start
+pre: export _UUCLOUD_DEVENV_PREFER_DOCKER_TOOLBOX=false
 
 # Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
 # pre_window: rbenv shell 2.0.0-p247
-pre_window: eval $(docker-machine env uucloud)
+# pre_window: eval $(docker-machine env uucloud) # don't need this anymore when using Docker for Mac :)
 
 # Pass command line options to tmux. Useful for specifying a different tmux.conf.
 # tmux_options: -f ~/.tmux.mac.conf
@@ -30,12 +31,10 @@ pre_window: eval $(docker-machine env uucloud)
 
 windows:
   - devenv-src:
-    layout: even-horizontal
-    panes:
-      - nvim docker-compose.yml
-      - nvim Rakefile
+      layout: even-horizontal
+      panes:
+        - e docker-compose.yml
+        - e Rakefile
   - devenv-shell: rake uucloud:status
-  - demoapp-src: cd ~/code/ruby_playground/runtime_stack_v2_demo/cds_echo && nvim app.rb Rakefile
-  - demoapp-shell: cd ~/code/ruby_playground/runtime_stack_v2_demo/cds_echo
-  - stack-src: cd ~/code/ruby-playground/runtime_stack_v2_demo && nvim sinatra147/Dockerfile Rakefile
-  - stack-shell: cd ~/code/ruby-playground/runtime_stack_v2_demo
+  - demoapp-src: cd ~/code/work/uuLogstore/cds_beaver-server && e app/cds_beaver/server/controllers/log.rb Rakefile
+  - demoapp-shell: cd ~/code/work/uuLogstore/cds_beaver-server
