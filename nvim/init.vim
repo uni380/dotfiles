@@ -393,9 +393,11 @@ let g:startify_bookmarks = [
   \ {'v': '~/.config/nvim/init.vim'},
   \ {'b': '~/Dropbox/Work/inbox.txt'},
   \ {'u': '~/.uu/config/uu-client.properties'},
+  \ {'l': '~/.uu/config/log4r.xml'},
   \ {'y': '~/.pry_history'},
   \ {'h': '~/.hammerspoon/init.lua'},
   \ {'t': '~/.tmux.conf'},
+  \ {'r': '~/.karabiner.d/configuration/karabiner.json'},
   \ ]
 
 " }}}
