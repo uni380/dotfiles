@@ -272,6 +272,7 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'tpope/vim-endwise'
 Plug 'airblade/vim-gitgutter'
 Plug 'janko-m/vim-test'
+Plug 'junegunn/gv.vim'
 
 " Text objects
 Plug 'kana/vim-textobj-user'
