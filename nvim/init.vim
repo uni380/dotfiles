@@ -577,7 +577,7 @@ inoremap <expr><Space> pumvisible() ? "\<C-n>\<C-y>" : "\<Space>"
 " Plugin Settings - FZF {{{
 " -----------------------------------------------------------------------------
 
-nnoremap <silent> <leader>zf :Files<cr>
+nnoremap <silent> <leader>zf :GFiles<cr>
 nnoremap <silent> <leader>zb :Buffers<cr>
 nnoremap <silent> <leader>zt :BTags<cr>
 
