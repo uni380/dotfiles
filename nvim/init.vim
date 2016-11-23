@@ -12,6 +12,8 @@ set list listchars=tab:\ \ ,trail:·
 if exists("neovim_dot_app")
   "tell the term has 256 colors
   set t_Co=256
+elseif has("nvim")
+  set termguicolors
 else
   let g:CSApprox_loaded = 1
 endif
@@ -46,6 +48,11 @@ set sidescroll=1
 
 set splitbelow
 set splitright
+
+" FIXME The following condition does not work in terminal NeoVim (VimR is OK)
+" if has('nvim')
+"   set inccommand=nosplit
+" endif
 
 " }}}
 " Options - Folding {{{
