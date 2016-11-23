@@ -240,7 +240,7 @@ Plug 'FooSoft/vim-argwrap'
 Plug 'christoomey/vim-tmux-navigator'
 
 " Search
-Plug 'justinmk/vim-sneak'
+" Plug 'justinmk/vim-sneak'
 Plug 'rking/ag.vim'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'Lokaltog/vim-easymotion'
@@ -411,7 +411,7 @@ let g:showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXY"
 " Plugin Settings - Sneak {{{
 " -----------------------------------------------------------------------------
 
-nmap <Space> <Plug>SneakForward
+" nmap <Space> <Plug>SneakForward
 
 " }}}
 " Plugin Settings - Ag {{{
@@ -438,8 +438,12 @@ let g:autotagExcludeSuffixes="tml.xml.text.txt.vim"
 " down recognition. The home keys and the immediate keys
 " accessible by middle fingers are available
 let g:EasyMotion_keys='asdfjkoweriop'
-nmap ,<ESC> ,,w
-nmap ,<S-ESC> ,,b
+let g:EasyMotion_startofline = 0 " keep cursor colum JK motion
+
+map  <Leader><Leader>s <Plug>(easymotion-bd-f)
+nmap <Leader><Leader>s <Plug>(easymotion-overwin-f)
+
+nmap <Space> <Plug>(easymotion-overwin-f2)
 
 " }}}
 " Plugin Settings - Fugitive {{{
