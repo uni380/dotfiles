@@ -5,7 +5,7 @@
 " Options - Appearance {{{
 " -----------------------------------------------------------------------------
 
-set relativenumber
+" set relativenumber
 set number
 set list listchars=tab:\ \ ,trail:·
 
