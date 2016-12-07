@@ -20,6 +20,7 @@ Plug 'vim-scripts/AutoTag'
 Plug 'Townk/vim-autoclose'
 Plug 'FooSoft/vim-argwrap'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'vim-scripts/ReplaceWithRegister'
 
 " Search
 " Plug 'justinmk/vim-sneak'
@@ -66,6 +67,7 @@ Plug 'nelstrom/vim-textobj-rubyblock'           |  Plug 'kana/vim-textobj-user'
 Plug 'coderifous/textobj-word-column.vim'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'wellle/targets.vim'
+Plug 'AndrewRadev/dsf.vim'
 
 " Code completion
 if has('nvim')
