@@ -39,8 +39,9 @@ singleApps = {
   {'t', 'iTerm'},
   {'u', 'iTunes'},
   {'v', 'MacVim'},
-  {'x', 'Firefox'},
   {'w', 'VimR'},
+  {'x', 'Firefox'},
+  {'y', 'Skype'},
 }
 
 for i, app in ipairs(singleApps) do
