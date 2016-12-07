@@ -270,6 +270,11 @@ nnoremap <silent> <Leader>a :ArgWrap<CR>
 " -----------------------------------------------------------------------------
 " Plugin Settings - vim-test
 
+" http://stackoverflow.com/a/28524118
+if $PATH !~ "\.rbenv"
+    let $PATH="/Users/uni380/.rbenv/shims:/Users/uni380/.rbenv/bin:" . $PATH
+endif
+
 let test#ruby#minitest#file_pattern = 'test_.*\.rb'
 let test#ruby#bundle_exec = 0
 
