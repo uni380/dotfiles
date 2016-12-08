@@ -284,3 +284,8 @@ nnoremap <silent> <Leader>ts :TestSuite<CR>
 nnoremap <silent> <Leader>tl :TestLast<CR>
 nnoremap <silent> <Leader>tv :TestVisit<CR>
 
+" -----------------------------------------------------------------------------
+" Plugin Settings - dash.vim
+
+nmap <Leader>d <Plug>DashSearch
+

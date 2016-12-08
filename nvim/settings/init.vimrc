@@ -31,6 +31,7 @@ Plug 'timakro/vim-searchant'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
+Plug 'rizzatti/dash.vim'
 
 " Appearance
 Plug 'chriskempson/base16-vim'
