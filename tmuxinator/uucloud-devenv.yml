@@ -38,3 +38,5 @@ windows:
   - devenv-shell: rake uucloud:status
   - demoapp-src: cd ~/code/work/uuLogstore/cds_beaver-server && e app/cds_beaver/server/controllers/log.rb Rakefile
   - demoapp-shell: cd ~/code/work/uuLogstore/cds_beaver-server
+  - c3-appbox: cd ~/code/work/git/uu.c3/uu_c3-appbox
+  - or-appbox: cd ~/code/work/git/uu.operationregistry/uu_operation_registry-appbox
