@@ -239,7 +239,12 @@ nnoremap C-y :YRShow<CR>
 " -----------------------------------------------------------------------------
 " Plugin Settings - Deoplete
 
-let g:deoplete#enable_at_startup = 1
+if has("python3")
+  let g:deoplete#enable_at_startup = 1
+else
+  let g:deoplete#enable_at_startup = 0
+endif
+
 if !exists('g:deoplete#omni#input_patterns')
   let g:deoplete#omni#input_patterns = {}
 endif
