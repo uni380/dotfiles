@@ -125,9 +125,3 @@ def uu_login(credentials = nil)
   credentials ||= '21-1'
   UU::OS::Security::Session.login(credentials)
 end
-
-def ues_login
-  require 'ues.core'
-  UESLogin.login(File.expand_path('~/.uuacc'))
-end
-
