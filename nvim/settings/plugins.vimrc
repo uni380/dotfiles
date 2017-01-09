@@ -92,7 +92,7 @@ let g:startify_bookmarks = [
   \ {'y': '~/.pry_history'},
   \ {'h': '~/.hammerspoon/init.lua'},
   \ {'t': '~/.tmux.conf'},
-  \ {'r': '~/.karabiner.d/configuration/karabiner.json'},
+  \ {'r': '~/.config/karabiner/karabiner.json'},
   \ ]
 
 " -----------------------------------------------------------------------------
