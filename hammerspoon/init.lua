@@ -623,7 +623,7 @@ local lastSSID = hs.wifi.currentNetwork()
 function ssidChangedCallback()
   newSSID = hs.wifi.currentNetwork()
 
-  if newSSID ~= homeSSID and lastSSID == homeSSID then
+  if newSSID ~= nil and newSSID ~= homeSSID and lastSSID == homeSSID then
     -- Just departed our home WiFi network
     hs.audiodevice.defaultOutputDevice():setVolume(0)
     hs.notify.show("Hammerspoon", "", "Volume set to 0")
