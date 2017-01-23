@@ -48,6 +48,8 @@ set sidescroll=1
 set splitbelow
 set splitright
 
+set wildmode=list:longest
+
 " FIXME The following condition does not work in terminal NeoVim (VimR is OK)
 " if has('nvim')
 "   set inccommand=nosplit
