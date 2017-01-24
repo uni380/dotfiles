@@ -664,4 +664,7 @@ hs.hotkey.bind(super, "R", function()
 end)
 hs.notify.show("Hammerspoon", "", "Config loaded")
 -- }}}
+
+require("modalmgr")
+
 -- vim:foldmethod=marker:foldenable
