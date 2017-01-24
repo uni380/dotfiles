@@ -2,6 +2,19 @@ local hyper = {"cmd", "ctrl", "alt", "shift"}
 local super = {"cmd", "ctrl", "alt"}
 
 --------------------------------------------------------------------------------
+-- Hammerspoon stuff {{{
+--------------------------------------------------------------------------------
+
+-- Reload configuration
+hs.hotkey.bind(super, "R", function()
+  hs.reload()
+end)
+hs.notify.show("Hammerspoon", "", "Config loaded")
+-- }}}
+
+require("modalmgr")
+
+--------------------------------------------------------------------------------
 -- Hyper key {{{
 --------------------------------------------------------------------------------
 
@@ -653,18 +666,5 @@ end
 wifiWatcher = hs.wifi.watcher.new(ssidChangedCallback)
 wifiWatcher:start()
 -- }}}
-
---------------------------------------------------------------------------------
--- Hammerspoon stuff {{{
---------------------------------------------------------------------------------
-
--- Reload configuration
-hs.hotkey.bind(super, "R", function()
-  hs.reload()
-end)
-hs.notify.show("Hammerspoon", "", "Config loaded")
--- }}}
-
-require("modalmgr")
 
 -- vim:foldmethod=marker:foldenable
