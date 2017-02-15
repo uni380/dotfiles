@@ -1,4 +1,8 @@
 {
+    "global": {
+        "check_for_updates_on_startup": true,
+        "show_in_menu_bar": true
+    },
     "profiles": [
         {
             "devices": [
@@ -35,7 +39,8 @@
                 "right_option": "end"
             },
             "virtual_hid_keyboard": {
-                "keyboard_type": "iso"
+                "caps_lock_delay_milliseconds": 0,
+                "keyboard_type": "ansi"
             }
         }
     ]
