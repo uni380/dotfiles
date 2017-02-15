@@ -59,6 +59,7 @@ Plug 'tpope/vim-endwise'
 Plug 'airblade/vim-gitgutter'
 Plug 'janko-m/vim-test'
 Plug 'junegunn/gv.vim'
+Plug 'pearofducks/ansible-vim'
 
 " Text objects
 Plug 'kana/vim-textobj-user'
