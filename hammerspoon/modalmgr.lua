@@ -290,11 +290,6 @@ if viewM then
     end
 end
 
-winhints_keys = winhints_keys or {"alt", "tab"}
-if string.len(winhints_keys[2]) > 0 then
-    modalmgr:bind(winhints_keys[1], winhints_keys[2], 'Show Windows Hint', function() exit_others(nil) hs.hints.windowHints() end)
-end
-
 if modalmgr then
     if launch_modalmgr == nil then launch_modalmgr = true end
     if launch_modalmgr == true then modalmgr:enter() end
